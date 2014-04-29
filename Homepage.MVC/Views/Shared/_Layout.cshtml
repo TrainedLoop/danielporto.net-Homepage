@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="DESCRIPTION" content="Portfólio com intuito de mostrar meus trabalhos como desenvolvedor, Conteudos OpenSource no GitHub e links para contato">
+    <meta name="ABSTRACT" content="Portfólio Daniel Porto">
+    <meta name="KEYWORDS" content="Portfólio, Daniel Porto, c#, .net, curriculum, desenvolvedor, programador, Daniel">
+
+    @Styles.Render("~/stylesheets/bootstrap")
+    @Styles.Render("~/stylesheets/carousel")
+
+
+
+</head>
+<body>
+    @Html.Action("Menu", "Layout")
+    @RenderBody()
+    @Html.Action("Footer","Layout")
+
+</body>
+@Scripts.Render("~/scripts/bootstrap")
+@Scripts.Render("~/scripts/carousel")
+@RenderSection("CustomInitScripts", false)
+
+</html>

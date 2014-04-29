@@ -1,0 +1,187 @@
+﻿@using Homepage.Core.Model;
+@{
+    ViewBag.Title = "Daniel Porto";
+    bool sendMail = ViewBag.SendMail == null ? false : ViewBag.SendMail;
+}
+@section CustomInitScripts{
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 4000,
+
+                items: 1,
+                itemsDesktop: [1000, 1], //5 items between 1000px and 901px
+                itemsDesktopSmall: [900, 1], // betweem 900px and 601px
+                itemsTablet: [600, 1], //2 items between 600 and 0
+                itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+            });
+
+        });
+    </script>
+@if (sendMail)
+{
+
+        <script>
+            $(document).ready(function () {
+                $('html, body').animate({
+                    scrollTop: $('#contact').offset().top
+                }, 0);
+            });
+        </script>
+    
+}
+    }
+
+
+
+<div class="intro-header " id="home">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>@General.FirstName @General.LastName</h1>
+                    <h3>Pagina Pessoal</h3>
+                    <hr class="intro-divider">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="content-section-a " id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <img class="img-responsive" src="/Content/img/dev.png" alt="">
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">
+                    Quem sou eu?
+                </h2>
+                <p class="lead">
+                    Olá meu nome é @General.FullName, tenho @General.Age anos. Curso Sistemas de Informação,
+                    tenho como propósito mostrar alguns projetos pessoais como desenvolvedor.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-b " id="projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <div id="owl-demo" class="owl-carousel">
+                    <div class="item"><a href="http://yuffie.danielporto.net"><img src="~/Content/img/consignaweb.jpg" width="100%" class="img-thumbnail"></a></div>
+                    <div class="item"><a href="http://yuffie.danielporto.net"><img src="~/Content/img/consignaweb2.jpg" width="100%" class="img-thumbnail"></a></div>
+                    <div class="item"><a href="http://yuffie.danielporto.net"><img src="~/Content/img/consignaweb3.jpg" width="100%" class="img-thumbnail"></a></div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+
+                <div class="clearfix"></div>
+                <h2 class="section-heading">
+                    Projetos
+                    <br>
+                </h2>
+                <p class="lead">
+                    <br />
+                    <center><a class="btn btn-default btn-lg" href="http://yuffie.danielporto.net">Consigna Web</a>
+                        <a class="btn btn-default btn-lg" href="#">A Cripta do Vampiro</a></center>    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-a " id="git">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <img class="img-responsive" src="/Content/img/github-logo-transparent.png" alt="">
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">
+                    GitHub
+                    <br>
+                </h2>
+                <p class="lead">
+                    GitHub é um Serviço de Web Hosting Compartilhado para projetos que usam o controle de versionamento Git. Nele estão os códigos fonte de alguns de meus projetos<br />
+                    <h4><a class="btn btn-default btn-lg" href="https://github.com/danielportonet"><i class="fa fa-github fa-fw"></i> Meu GitHub</a></h4>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section-b " id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <img class="img-responsive" style="float:inherit" src="/Content/img/email.png" alt="">
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">
+                    Contato
+                </h2>
+                @using (Html.BeginForm("SendMail", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="col-md-3">
+                        <label class="lead">Assunto</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" required name="subject" maxlength="30" class="form-control" />
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="lead">Email</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="email" required name="email" maxlength="30" class="form-control" />
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="lead">Mensagem</label>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea name="message" required class="form-control" rows="7" cols="50" maxlength="600"></textarea>
+                        <label style="color:red">@ViewBag.EmailError</label>
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <input type="submit" style="float:right;" class="btn btn-default" value="Enviar" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Me encontre em:</h2>
+            </div>
+            <div class="col-lg-6">
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://github.com/danielportonet" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="http://br.linkedin.com/pub/daniel-porto/92/39b/74" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">LinkedIn</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
