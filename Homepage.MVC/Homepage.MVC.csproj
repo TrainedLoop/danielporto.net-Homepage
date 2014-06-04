@@ -137,9 +137,10 @@
   <ItemGroup>
     <Content Include="Content\Fonts\font-awesome.min.css" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\img\consignaweb.jpg" />
-    <Content Include="Content\img\consignaweb2.jpg" />
-    <Content Include="Content\img\consignaweb3.jpg" />
+    <Content Include="Content\img\cons1.png" />
+    <Content Include="Content\img\cons2.png" />
+    <Content Include="Content\img\did1.png" />
+    <Content Include="Content\img\did2.png" />
     <Content Include="Content\img\github-logo-transparent.png" />
     <Content Include="Content\img\email.png" />
     <Content Include="Content\img\dev.png" />
@@ -211,7 +212,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>12222</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
